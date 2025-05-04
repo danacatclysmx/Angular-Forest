@@ -1,1 +1,208 @@
-<p>jefe works!</p>
+<div class="container">
+    <!-- Botón de menú hamburguesa -->
+    <button class="menu-toggle" #menuToggle>
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Overlay para cerrar el menú -->
+    <div class="overlay" #overlay></div>
+
+    <!-- Menú lateral -->
+    <div class="sidebar" #sidebar>
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">Menú</h2>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item active" data-section="conglomerados">
+                <i class="fas fa-list"></i>
+                <span>Lista de Conglomerados</span>
+            </li>
+            <li class="menu-item" data-section="papelera">
+                <i class="fas fa-trash"></i>
+                <span>Papelera</span>
+            </li>
+        </ul>
+        
+        <div class="create-button" #createButton>
+            <i class="fas fa-plus"></i> CREAR
+        </div>
+    </div>
+
+    <!-- Modal para Crear Conglomerado -->
+    <div class="modal-overlay" id="modalCrear">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">CREAR NUEVO CONGLOMERADO</div>
+                <button class="close-button" id="closeCrearModal">&times;</button>
+            </div>
+            
+            <form id="formCrearConglomerado">
+                <div class="form-group">
+                    <label for="departamento">Departamento:</label>
+                    <input type="text" id="departamento" name="departamento" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="municipio">Municipio:</label>
+                    <input type="text" id="municipio" name="municipio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="corregimiento">Corregimiento:</label>
+                    <input type="text" id="corregimiento" name="corregimiento">
+                </div>
+                
+                <div class="form-group">
+                    <label for="coordenadas">Coordenadas Centro:</label>
+                    <input type="text" id="coordenadas" name="coordenadas" 
+                        placeholder="Ej: 04°32'15.67N 74°12'45.89W" required
+                        pattern="\d+°\d+'[\d.]+[NSns] \d+°\d+'[\d.]+[EWew]"
+                        title="Formato: DD°MM'SS.SS N DD°MM'SS.SS W">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fechaInicio">Fecha de Inicio:</label>
+                    <input type="date" id="fechaInicio" name="fechaInicio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fechaFin">Fecha de Finalización:</label>
+                    <input type="date" id="fechaFin" name="fechaFin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="precision">Precisión GPS:</label>
+                    <input type="text" id="precision" name="precision" placeholder="Ej: ±0.35 m" required>
+                </div>
+                
+                <h3>Punto de Referencia</h3>
+                <div class="form-group">
+                    <label for="puntoTipo">Tipo:</label>
+                    <input type="text" id="puntoTipo" name="puntoTipo" placeholder="Ej: Árbol destacado">
+                </div>
+                
+                <div class="form-group">
+                    <label for="puntoAzimut">Azimut:</label>
+                    <input type="text" id="puntoAzimut" name="puntoAzimut" placeholder="Ej: 45°">
+                </div>
+                
+                <div class="form-group">
+                    <label for="puntoDistancia">Distancia horizontal:</label>
+                    <input type="text" id="puntoDistancia" name="puntoDistancia" placeholder="Ej: 15 m">
+                </div>
+                
+                <div class="action-buttons">
+                    <button type="button" class="action-button reject-button" id="cancelarCrear">CANCELAR</button>
+                    <button type="submit" class="action-button approve-button">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h1 id="mainTitle">CONGLOMERADOS</h1>
+    
+    <div class="status-tabs" id="statusTabs">
+        <div class="status-tab active" data-status="pendientes">PENDIENTES</div>
+        <div class="status-tab" data-status="aprobados">APROBADOS</div>
+        <div class="status-tab" data-status="rechazados">RECHAZADOS</div>
+    </div>
+    
+    <div id="conglomeradosContainer">
+        <!-- Los conglomerados se cargarán dinámicamente aquí -->
+    </div>
+</div>
+
+<!-- Modal de Detalles -->
+<div class="modal-overlay" id="modalDetalles">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title" id="modalConglomeradoId"></div>
+            <button class="close-button" id="closeModal">&times;</button>
+        </div>
+        
+        <div class="modal-section">
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Fecha de Inicio:</strong> <span id="fechaInicioDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Fecha de Finalización:</strong> <span id="fechaFinDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Departamento:</strong> <span id="departamentoDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Municipio:</strong> <span id="municipioDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Corregimiento:</strong> <span id="corregimientoDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Coordenadas Centro:</strong> <span id="coordenadasDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Aprobado por:</strong> <span id="aprobadoPorDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Precisión GPS:</strong> <span id="precisionDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Fecha Aprobación:</strong> <span id="fechaAprobacionDetalle"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Estado:</strong> <span id="estadoDetalle"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+
+        <div class="modal-section">
+            <h3>Mapa de Subparcelas</h3>
+            <div id="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+        
+        <div class="modal-section">
+            <h3>Puntos de Referencia</h3>
+            <div class="punto-referencia">
+                <div><strong>Tipo:</strong> <span id="puntoTipoDetalle"></span></div>
+                <div><strong>Azimut:</strong> <span id="puntoAzimutDetalle"></span></div>
+                <div><strong>Distancia horizontal:</strong> <span id="puntoDistanciaDetalle"></span></div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="modal-section">
+            <h3>Subparcelas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subparcela</th>
+                        <th>Radio</th>
+                        <th>Azimut</th>
+                        <th>Distancia al Centro</th>
+                        <th>Materializado</th>
+                        <th>Color</th>
+                        <th>Posición</th>
+                    </tr>
+                </thead>
+                <tbody id="subparcelasTable">
+                    <!-- Datos de subparcelas se llenarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="action-buttons" id="actionButtons">
+            <!-- Botones de acción se llenarán dinámicamente -->
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

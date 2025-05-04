@@ -1,0 +1,615 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  /* Botón de menú hamburguesa */
+  .menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60px;
+    width: 70px;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #483d3d;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  
+  /* Menú lateral */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #ffffff;
+    color: black;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-align: center;
+    /* Quita esta línea ↓ */
+    /* transform: translateX(-100%); */
+}
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .sidebar-header {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+  
+  .menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+  }
+  
+  .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .menu-item i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  .menu-item.active {
+    background-color: #3498db;
+  }
+  
+  .create-button {
+    color: white;
+    background-color: #2ecc71;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  
+  .create-button:hover {
+    background-color: #27ae60;
+  }
+  
+  /* Overlay para cerrar el menú */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none;
+  }
+  
+  .overlay.open {
+    display: block;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .status-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .status-tab {
+    margin-right: 20px;
+    font-weight: bold;
+    color: #7f8c8d;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .status-tab:hover {
+    color: #2c3e50;
+  }
+  
+  .status-tab.active {
+    color: #2c3e50;
+    border-bottom: 2px solid #2c3e50;
+  }
+  
+  .conglomerado {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .conglomerado:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .conglomerado-id {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .conglomerado-info {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .conglomerado-info strong {
+    color: #7f8c8d;
+  }
+  
+  /* Menú de tres puntos */
+  .options-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+  }
+  
+  .options-button {
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .dot {
+    width: 4px;
+    height: 4px;
+    background-color: #7f8c8d;
+    border-radius: 50%;
+  }
+  
+  .options-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 10;
+    overflow: hidden;
+  }
+  
+  .options-dropdown.show {
+    display: block;
+    animation: fadeIn 0.2s;
+  }
+  
+  .option-item {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .option-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Estilos para el modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d;
+  }
+  
+  .modal-section {
+    margin-bottom: 20px;
+  }
+  
+  .modal-section h3 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .info-item {
+    margin-bottom: 10px;
+  }
+  
+  .info-item strong {
+    color: #7f8c8d;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .reject-button {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .approve-button {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .correct-button {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  .action-button:hover {
+    opacity: 0.9;
+  }
+  
+  .divider {
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+  }
+  
+  .subparcela-details {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid #eee;
+  }
+  
+  .punto-referencia {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  /* Estilos para el formulario de creación */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
+  
+  #formCrearConglomerado h3 {
+    margin-top: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    color: #2c3e50;
+  }
+  
+  /* Agregar al final del archivo CSS existente */
+  
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+    font-style: italic;
+  }
+  
+  .estado-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .estado-badge.pendientes {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  .estado-badge.aprobados {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .estado-badge.rechazados {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .delete-permanently {
+    color: #e74c3c !important;
+  }
+  
+  .delete-permanently:hover {
+    background-color: #ffebee !important;
+  }
+  
+  /* Asegurarse de que los botones de acción se vean bien */
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  
+  .action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .reject-button {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .approve-button {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .correct-button {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  .action-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Estilos para el mapa */
+  #map-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+  }
+  
+  /* Estilo para mensajes de carga */
+  .map-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #666;
+    font-style: italic;
+  }
+  
+  .leaflet-control-container {
+    font-size: 12px;
+  }
+  
+  /* Estilos para los controles del mapa */
+  .leaflet-control-zoom {
+    margin-right: 10px !important;
+    margin-top: 10px !important;
+    border: 1px solid #ccc !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  }
+  
+  .leaflet-control-attribution {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    padding: 2px 5px !important;
+    font-size: 11px !important;
+  }
+  
+  /* Mejorar visibilidad de tooltips */
+  .leaflet-tooltip {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  
+  /* Estilos para mensajes de error del mapa */
+  .map-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .map-error i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #dc3545;
+  }
+  
+  .map-error p {
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  .map-error small {
+    font-size: 12px;
+    color: #999;
+  }
