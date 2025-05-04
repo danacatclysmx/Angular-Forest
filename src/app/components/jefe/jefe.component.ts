@@ -657,7 +657,6 @@ export class JefeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (element) element.textContent = text;
   }
 
-  // CRUD Operations
   createNewConglomerado(): void {
     const form = document.getElementById('formCrearConglomerado') as HTMLFormElement;
     if (!form) return;
@@ -688,17 +687,18 @@ export class JefeComponent implements OnInit, AfterViewInit, OnDestroy {
         { id: 'SPO', radio: '40 m', azimut: '270°', distancia_centro: '80 m', materializado: 'No', color: 'Blanco', posicion: 'Oeste' }
       ]
     };
-  
+
     // Guarda en el servicio
     this.conglomeradoService.createConglomerado(newConglomerado);
-  
-    // Recarga los datos
-    this.loadConglomerados();
-  
+    
+    // Recarga los datos desde el servicio (no desde copias locales)
+    this.loadConglomerados(); 
+
     // Cierra el modal
     const modalCrear = document.getElementById('modalCrear');
     if (modalCrear) modalCrear.style.display = 'none';
-  
+    document.body.style.overflow = 'auto';
+
     // Reinicia el formulario
     form.reset();
   }
