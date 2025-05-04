@@ -50,19 +50,10 @@
   <h1 id="mainTitle">CONGLOMERADOS</h1>
 
   <div class="status-tabs" id="statusTabs">
-    <div
-      class="status-tab active"
-      (click)="filterConglomerados('pendientes', $event)"
-    >
-      PENDIENTES
-    </div>
-    <div class="status-tab" (click)="filterConglomerados('aprobados', $event)">
-      APROBADOS
-    </div>
-    <div class="status-tab" (click)="filterConglomerados('rechazados', $event)">
-      RECHAZADOS
-    </div>
-  </div>
+    <div class="status-tab active" data-status="pendientes">PENDIENTES</div>
+    <div class="status-tab" data-status="aprobados">APROBADOS</div>
+    <div class="status-tab" data-status="rechazados">RECHAZADOS</div>
+</div>
 
   <div id="conglomeradosContainer">
     <!-- Los conglomerados se cargarán dinámicamente aquí -->
