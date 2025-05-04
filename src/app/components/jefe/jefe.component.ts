@@ -72,6 +72,84 @@ export class JefeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cdRef.detectChanges();
   }
 
+  setupEventListeners(): void {
+    // Menú lateral - usa Renderer2 para mejor compatibilidad con Angular
+    this.menuToggle.nativeElement.addEventListener('click', (e: Event) => {
+      e.stopPropagation();
+      this.sidebar.nativeElement.classList.toggle('open');
+      this.overlay.nativeElement.classList.toggle('open');
+      this.menuToggle.nativeElement.classList.toggle('open');
+    });
+  
+    this.overlay.nativeElement.addEventListener('click', () => {
+      this.closeSidebar();
+    });
+  
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e: Event) => {
+      if (!this.sidebar.nativeElement.contains(e.target) && 
+          e.target !== this.menuToggle.nativeElement) {
+        this.closeSidebar();
+      }
+    });
+  
+    // ✅ Reemplaza esta sección:
+    document.querySelectorAll('.menu-item').forEach((item: Element) => {
+      item.addEventListener('click', () => {
+        const section = item.getAttribute('data-section') as 'conglomerados' | 'papelera';
+        this.toggleSection(section);
+        // Actualiza clases activas
+        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  
+    // Botón CREAR
+    this.createButton.nativeElement.addEventListener('click', () => {
+      const modalCrear = document.getElementById('modalCrear');
+      const closeCrearModal = document.getElementById('closeCrearModal');
+      const cancelarCrear = document.getElementById('cancelarCrear');
+      if (modalCrear) {
+        modalCrear.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        this.sidebar.nativeElement.classList.remove('open');
+        this.overlay.nativeElement.classList.remove('open');
+        this.menuToggle.nativeElement.classList.remove('open');
+      }
+      if (closeCrearModal) {
+        closeCrearModal.addEventListener('click', () => {
+          if (modalCrear) modalCrear.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        });
+      }
+      if (cancelarCrear) {
+        cancelarCrear.addEventListener('click', () => {
+          if (modalCrear) modalCrear.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        });
+      }
+    });
+  
+    // Formulario de creación
+    const formCrear = document.getElementById('formCrearConglomerado');
+    if (formCrear) {
+      formCrear.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.createNewConglomerado();
+      });
+    }
+  
+    // Filtros de estado
+    document.querySelectorAll('.status-tab').forEach((tab: Element) => {
+      tab.addEventListener('click', (e: Event) => {
+        const status = tab.getAttribute('data-status');
+        if (status) {
+          this.filterConglomerados(status, e);
+        }
+      });
+    });
+  }
+
   private initializeMap(): void {
     if (!this.mapContainer?.nativeElement) return;
 
@@ -187,11 +265,11 @@ export class JefeComponent implements OnInit, AfterViewInit, OnDestroy {
   // Data Management
   loadConglomerados(): void {
     if (this.currentSection === 'conglomerados') {
-      this.conglomerados = this.conglomeradoService.getConglomerados();
-      this.filteredConglomerados = [...this.conglomerados]; // Copia para filtrado
+      this.conglomerados = this.conglomeradoService.getConglomerados(); // Datos del servicio
+      this.filteredConglomerados = [...this.conglomerados];
     } else {
-      this.papelera = this.conglomeradoService.getPapelera();
-      this.filteredConglomerados = [...this.papelera]; // Copia para filtrado
+      this.papelera = this.conglomeradoService.getPapelera(); // Datos del servicio
+      this.filteredConglomerados = [...this.papelera];
     }
     this.renderConglomeradosList();
   }
