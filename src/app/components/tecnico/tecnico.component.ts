@@ -1,56 +1,12 @@
-import { Component } from '@angular/core';
-
-// Interfaces para tipado
-interface Conglomerado {
-  id: string;
-  nombre?: string;
-  departamento?: string;
-  municipio?: string;
-  estado: string;
-  testator?: string; // Propiedad faltante
-  [key: string]: any; // Para propiedades adicionales
-}
-
-interface Muestra {
-  id: string;
-  codigo: string;
-  conglomerado: string;
-  tipo?: string;
-  fechaRecoleccion: string;
-  azimut?: string;
-  distancia?: string;
-  profundidad?: string;
-  colorSuelo?: string;
-  pesoFresco?: string;
-  analisis: string[];
-  observaciones?: string;
-  fechaRegistro: string;
-}
-
-interface Ruta {
-  id: string;
-  codigo: string;
-  conglomerado: string;
-  fecha: string;
-  estado: number;
-  tiempoEstimado?: string; // Propiedad faltante
-  fechaRecoleccion?: string;
-  fechaEnvio?: string;
-  fechaEnRuta?: string;
-  fechaEntrega?: string;
-}
-
-interface PapeleraItem {
-  id: string;
-  tipo: 'conglomerado' | 'muestra' | 'ruta';
-  // Propiedades comunes requeridas
-  estado?: string; // Para Conglomerado
-  codigo?: string; // Para Ruta
-  conglomerado?: string; // Para Ruta
-  fecha?: string; // Para Ruta
-  // Propiedades adicionales
-  [key: string]: any;
-}
+import { Component, OnInit } from '@angular/core';
+import { TecnicoService } from '../../services/tecnico.service';
+import { 
+  Conglomerado, 
+  Muestra, 
+  Ruta, 
+  PapeleraItem,
+  SeccionTecnico 
+} from '../../models/tecnico.model';
 
 @Component({
   
