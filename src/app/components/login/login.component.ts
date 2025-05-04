@@ -74,23 +74,23 @@ export class LoginComponent implements OnInit {
     container?.classList.toggle("right-panel-active");
   }
 
-  private authenticateUser(username: string, password: string): Promise<string> {
+  private authenticateUser(username: string, password: string): Promise<void> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const credencialesValidas: Record<string, { password: string, redirect: string }> = {
+        const credencialesValidas = {
           '1': { password: '1', redirect: '/jefe' },
           '2': { password: '2', redirect: '/tecnico' }
         };
-
-        if (
-          credencialesValidas[username] &&
-          credencialesValidas[username].password === password
-        ) {
-          resolve(credencialesValidas[username].redirect);
+  
+        const credencial = credencialesValidas[username as keyof typeof credencialesValidas];
+        
+        if (credencial && credencial.password === password) {
+          this.router.navigateByUrl(credencial.redirect)
+            .then(() => resolve())
+            .catch(err => reject(err));
         } else {
-          reject(new Error("Credenciales incorrectas. Inténtalo de nuevo."));
+          reject(new Error("Credenciales incorrectas"));
         }
       }, 500);
     });
-  }
-}
+}}
