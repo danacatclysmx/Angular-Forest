@@ -1,0 +1,223 @@
+/* Figma Styles of your File */
+:root {
+    /* Colors */
+    --gradient-primary-gg: linear-gradient(
+      137deg,
+      rgba(87, 151, 210, 1) 0%,
+      rgba(42, 116, 184, 1) 100%
+    );
+    --gradient-secundary-gg: linear-gradient(
+      135deg,
+      rgba(163, 205, 249, 1) 0%,
+      rgba(96, 187, 252, 1) 100%
+    );
+    --gradient-tertiary-gg: linear-gradient(
+      137deg,
+      rgba(97, 130, 186, 1) 0%,
+      rgba(52, 90, 153, 1) 100%
+    );
+    --gradient-lowest-gg: linear-gradient(
+      137.07deg,
+      rgba(248, 249, 251, 1) 0%,
+      rgba(241, 245, 249, 1) 100%
+    );
+    --gradient-low-gg: linear-gradient(
+      137.07deg,
+      rgba(244, 247, 249, 1) 0%,
+      rgba(222, 230, 235, 1) 100%
+    );
+    --gradient-high-gg: linear-gradient(
+      116.1deg,
+      rgba(235, 240, 242, 1) 0%,
+      rgba(206, 218, 242, 1) 100%
+    );
+  
+    /* Fonts */
+    --large-headline-1-l-font-family: OpenSans-SemiBold, sans-serif;
+    --large-headline-1-l-font-size: 56px;
+    --large-headline-1-l-line-height: 64px;
+    --large-headline-1-l-font-weight: 600;
+    --large-headline-1-l-font-style: normal;
+    --large-headline-2-l-font-family: OpenSans-SemiBold, sans-serif;
+    --large-headline-2-l-font-size: 48px;
+    --large-headline-2-l-line-height: 56px;
+    --large-headline-2-l-font-weight: 600;
+    --large-headline-2-l-font-style: normal;
+    --large-headline-3-l-font-family: OpenSans-Regular, sans-serif;
+    --large-headline-3-l-font-size: 40px;
+    --large-headline-3-l-line-height: 48px;
+    --large-headline-3-l-font-weight: 400;
+    --large-headline-3-l-font-style: normal;
+    --large-headline-3-l-bold-font-family: OpenSans-Bold, sans-serif;
+    --large-headline-3-l-bold-font-size: 40px;
+    --large-headline-3-l-bold-line-height: 48px;
+    --large-headline-3-l-bold-font-weight: 700;
+    --large-headline-3-l-bold-font-style: normal;
+    --large-headline-4-l-font-family: OpenSans-Regular, sans-serif;
+    --large-headline-4-l-font-size: 32px;
+    --large-headline-4-l-line-height: 40px;
+    --large-headline-4-l-font-weight: 400;
+    --large-headline-4-l-font-style: normal;
+    --large-headline-4-l-bold-font-family: OpenSans-Bold, sans-serif;
+    --large-headline-4-l-bold-font-size: 32px;
+    --large-headline-4-l-bold-line-height: 40px;
+    --large-headline-4-l-bold-font-weight: 700;
+    --large-headline-4-l-bold-font-style: normal;
+    --large-paragraph-1-l-font-family: Roboto-Regular, sans-serif;
+    --large-paragraph-1-l-font-size: 24px;
+    --large-paragraph-1-l-line-height: 32px;
+    --large-paragraph-1-l-font-weight: 400;
+    --large-paragraph-1-l-font-style: normal;
+    --large-paragraph-1-l-bold-font-family: Roboto-Bold, sans-serif;
+    --large-paragraph-1-l-bold-font-size: 24px;
+    --large-paragraph-1-l-bold-line-height: 32px;
+    --large-paragraph-1-l-bold-font-weight: 700;
+    --large-paragraph-1-l-bold-font-style: normal;
+    --large-paragraph-2-l-font-family: Roboto-Regular, sans-serif;
+    --large-paragraph-2-l-font-size: 18px;
+    --large-paragraph-2-l-line-height: 24px;
+    --large-paragraph-2-l-font-weight: 400;
+    --large-paragraph-2-l-font-style: normal;
+    --large-paragraph-2-l-bold-font-family: Roboto-Bold, sans-serif;
+    --large-paragraph-2-l-bold-font-size: 18px;
+    --large-paragraph-2-l-bold-line-height: 24px;
+    --large-paragraph-2-l-bold-font-weight: 700;
+    --large-paragraph-2-l-bold-font-style: normal;
+    --large-paragraph-3-l-font-family: Roboto-Regular, sans-serif;
+    --large-paragraph-3-l-font-size: 16px;
+    --large-paragraph-3-l-line-height: 24px;
+    --large-paragraph-3-l-font-weight: 400;
+    --large-paragraph-3-l-font-style: normal;
+    --large-paragraph-3-l-bold-font-family: Roboto-Bold, sans-serif;
+    --large-paragraph-3-l-bold-font-size: 16px;
+    --large-paragraph-3-l-bold-line-height: 24px;
+    --large-paragraph-3-l-bold-font-weight: 700;
+    --large-paragraph-3-l-bold-font-style: normal;
+    --large-paragraph-4-l-font-family: Roboto-Regular, sans-serif;
+    --large-paragraph-4-l-font-size: 14px;
+    --large-paragraph-4-l-line-height: 24px;
+    --large-paragraph-4-l-font-weight: 400;
+    --large-paragraph-4-l-font-style: normal;
+    --large-paragraph-4-l-bold-font-family: Roboto-Bold, sans-serif;
+    --large-paragraph-4-l-bold-font-size: 14px;
+    --large-paragraph-4-l-bold-line-height: 24px;
+    --large-paragraph-4-l-bold-font-weight: 700;
+    --large-paragraph-4-l-bold-font-style: normal;
+    --small-headline-1-sm-font-family: OpenSans-Bold, sans-serif;
+    --small-headline-1-sm-font-size: 40px;
+    --small-headline-1-sm-line-height: 48px;
+    --small-headline-1-sm-font-weight: 700;
+    --small-headline-1-sm-font-style: normal;
+    --small-headline-2-sm-font-family: OpenSans-Bold, sans-serif;
+    --small-headline-2-sm-font-size: 32px;
+    --small-headline-2-sm-line-height: 40px;
+    --small-headline-2-sm-font-weight: 700;
+    --small-headline-2-sm-font-style: normal;
+    --small-headline-3-sm-font-family: OpenSans-SemiBold, sans-serif;
+    --small-headline-3-sm-font-size: 24px;
+    --small-headline-3-sm-line-height: 32px;
+    --small-headline-3-sm-font-weight: 600;
+    --small-headline-3-sm-font-style: normal;
+    --small-headline-4-sm-font-family: OpenSans-Regular, sans-serif;
+    --small-headline-4-sm-font-size: 18px;
+    --small-headline-4-sm-line-height: 24px;
+    --small-headline-4-sm-font-weight: 400;
+    --small-headline-4-sm-font-style: normal;
+    --small-headline-4-sm-bold-font-family: OpenSans-Bold, sans-serif;
+    --small-headline-4-sm-bold-font-size: 18px;
+    --small-headline-4-sm-bold-line-height: 24px;
+    --small-headline-4-sm-bold-font-weight: 700;
+    --small-headline-4-sm-bold-font-style: normal;
+    --small-paragraph-1-sm-font-family: Roboto-Regular, sans-serif;
+    --small-paragraph-1-sm-font-size: 16px;
+    --small-paragraph-1-sm-line-height: 24px;
+    --small-paragraph-1-sm-font-weight: 400;
+    --small-paragraph-1-sm-font-style: normal;
+    --small-paragraph-1-sm-bold-font-family: Roboto-Bold, sans-serif;
+    --small-paragraph-1-sm-bold-font-size: 16px;
+    --small-paragraph-1-sm-bold-line-height: 24px;
+    --small-paragraph-1-sm-bold-font-weight: 700;
+    --small-paragraph-1-sm-bold-font-style: normal;
+    --small-paragraph-2-sm-font-family: Roboto-Regular, sans-serif;
+    --small-paragraph-2-sm-font-size: 14px;
+    --small-paragraph-2-sm-line-height: 18px;
+    --small-paragraph-2-sm-font-weight: 400;
+    --small-paragraph-2-sm-font-style: normal;
+    --small-paragraph-2-sm-bold-font-family: Roboto-Bold, sans-serif;
+    --small-paragraph-2-sm-bold-font-size: 14px;
+    --small-paragraph-2-sm-bold-line-height: 18px;
+    --small-paragraph-2-sm-bold-font-weight: 700;
+    --small-paragraph-2-sm-bold-font-style: normal;
+    --small-paragraph-3-sm-font-family: Roboto-Regular, sans-serif;
+    --small-paragraph-3-sm-font-size: 12px;
+    --small-paragraph-3-sm-line-height: 16px;
+    --small-paragraph-3-sm-font-weight: 400;
+    --small-paragraph-3-sm-font-style: normal;
+    --small-paragraph-3-sm-bold-font-family: Roboto-Bold, sans-serif;
+    --small-paragraph-3-sm-bold-font-size: 12px;
+    --small-paragraph-3-sm-bold-line-height: 16px;
+    --small-paragraph-3-sm-bold-font-weight: 700;
+    --small-paragraph-3-sm-bold-font-style: normal;
+  
+    /* Effects */
+    --elevation-1-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+      0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --elevation-2-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+      0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    --elevation-3-box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+    --elevation-4-box-shadow: 0px 6px 10px 4px rgba(0, 0, 0, 0.15),
+      0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    --elevation-5-box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15),
+      0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+    --neo-1-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+      -1px -1px 3px 1px rgba(255, 255, 255, 0.25);
+    --neo-2-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3),
+      -2px -2px 6px 2px rgba(255, 255, 255, 0.25);
+    --neo-3-box-shadow: 2px 3px 2px 0px rgba(0, 0, 0, 0.15),
+      -2px -2px 2px 0px rgba(255, 255, 255, 0.25);
+    --neo-4-box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.15),
+      -2px -2px 4px 0px rgba(255, 255, 255, 0.3);
+    --neo-5-box-shadow: 2px 5px 4px 1px rgba(0, 0, 0, 0.15),
+      -3px -3px 4px 1px rgba(255, 255, 255, 0.3);
+    --neo-light-1-box-shadow: 4px 4px 20px 0px rgba(0, 78, 103, 0.15),
+      -4px -4px 20px 0px rgba(255, 255, 255, 0.15);
+    --neo-light-2-box-shadow: 8px 8px 30px 3px rgba(0, 78, 103, 0.15),
+      -8px -8px 30px 3px rgba(255, 255, 255, 0.15);
+    --neo-light-3-box-shadow: 16px 16px 40px 0px rgba(0, 78, 103, 0.15),
+      -16px -16px 40px 3px rgba(255, 255, 255, 0.15);
+
+      
+    --color-primary: rgba(0, 75, 154, 1);
+    --color-on-primary: rgba(255, 255, 255, 1);
+    --color-secondary: rgba(96, 187, 252, 1);
+    --color-secondary-gg:  rgba(41, 58, 96,1);
+    --color-secondary-2: rgba(8, 146, 244, 1);
+    --color-on-secondary: rgba(236, 255, 255, 1);
+    --color-tertiary:  rgba(0, 0, 0, 1);
+    --color-on-tertiary: rgba(221, 236, 252, 1);
+    --color-primary-container: rgba(220, 220, 220, 1);
+    --color-on-primary-container: rgba(20, 20, 20, 1);
+    --color-secondary-container: rgba(193, 233, 255, 1); 
+    --color-on-secondary-container: rgba(36, 127, 192, 1);
+    --color-secondary-container-gg: rgba(211, 228, 255,1);
+    --color-tertiary-container: rgba(163, 205, 249, 1);
+    --color-on-tertiary-container: rgba(0, 25, 104, 1);
+    --color-surface-dim: rgba(219, 224, 238, 1);
+    --color-surface: rgba(231, 236, 239, 1);
+    --color-surface-bright: rgba(235, 240, 242, 1);
+    --color-surface-container-lowest: rgba(244, 247, 249, 1);
+    --color-surface-container-low: rgba(237, 243, 245, 1);
+    --color-surface-container: rgba(231, 238, 242, 1);
+    --color-surface-container-high: rgba(222, 230, 235, 1);
+    --color-surface-container-highest: rgba(205, 218, 242, 1);
+    --color-on-surface: rgba(24, 24, 28, 1);
+    --color-on-surface-variant: rgba(73, 73, 81, 1);
+    --color-outline: rgba(152, 153, 160, 1);
+    --color-error: rgba(219, 27, 27, 1);
+    --color-on-error: rgba(255, 242, 242, 1);
+    --color-error-container: rgba(255, 203, 203, 1);
+    --color-on-error-container: rgba(129, 0, 0, 1);
+    --color-white: rgba(255, 255, 255, 1);
+    --styles-math-counter: 2023px;
+  }
