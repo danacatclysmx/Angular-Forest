@@ -1,0 +1,63 @@
+<!-- src/app/components/login/login.component.html -->
+<div class="container" id="container">
+    <!-- Formulario para solicitar una cuenta nueva -->
+    <div class="form-container sign-up-container">
+      <form (ngSubmit)="solicitarCuenta()">
+        <h1>Pide Tu cuenta</h1>
+  
+        <div class="infield">
+          <input type="text" [(ngModel)]="nuevoUsuario.nombre" name="nombre" placeholder="Nombre" required />
+        </div>
+  
+        <div class="infield">
+          <input type="text" [(ngModel)]="nuevoUsuario.cargo" name="cargo" placeholder="Cargo" required />
+        </div>
+  
+        <div class="infield">
+          <input type="email" [(ngModel)]="nuevoUsuario.email" name="email" placeholder="Correo" required />
+        </div>
+  
+        <button class="styles_button" type="submit">Pidela</button>
+      </form>
+    </div>
+  
+    <!-- Formulario de inicio de sesión -->
+    <div class="form-container sign-in-container">
+      <form (ngSubmit)="iniciarSesion()">
+        <h1>Iniciar sesión</h1>
+  
+        <div class="infield">
+          <input type="text" [(ngModel)]="credenciales.usuario" name="usuario" placeholder="usuario" required />
+        </div>
+  
+        <div class="infield">
+          <input type="password" [(ngModel)]="credenciales.contrasena" name="contrasena" placeholder="Contraseña" required />
+        </div>
+  
+        <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+  
+        <button class="styles_button" type="submit">Acceder</button>
+  
+        <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
+      </form>
+    </div>
+  
+    <!-- Contenedor de superposición (overlay) -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>FOREST TRACK</h1>
+          <p><strong>Accede a tu cuenta</strong> y sigue donde lo dejaste.</p>
+          <button (click)="toggleOverlay()">Acceder</button>
+        </div>
+  
+        <div class="overlay-panel overlay-right">
+          <img src="assets/logo.png" alt="Forest Track Logo" class="logo" />
+          <p>¿No te han dado tu usuario?, <strong>Pídelo ahora!</strong></p>
+          <button (click)="toggleOverlay()">Pídelo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <button class="new-button" (click)="volver()">Volver</button>

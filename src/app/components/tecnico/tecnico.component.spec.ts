@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EstilosBaseComponent } from './estilos-base.component';
+import { TecnicoComponent } from './tecnico.component';
 
-describe('EstilosBaseComponent', () => {
-  let component: EstilosBaseComponent;
-  let fixture: ComponentFixture<EstilosBaseComponent>;
+describe('TecnicoComponent', () => {
+  let component: TecnicoComponent;
+  let fixture: ComponentFixture<TecnicoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EstilosBaseComponent]
+      imports: [TecnicoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EstilosBaseComponent);
+    fixture = TestBed.createComponent(TecnicoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

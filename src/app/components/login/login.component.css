@@ -1,0 +1,450 @@
+/* ============================
+Inicio de los estilos de login.html
+=============================== */
+
+/* Importa la fuente 'Poppins' desde Google Fonts con diferentes grosores */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Aplica un reset general:
+   - Elimina padding y márgenes de todos los elementos
+   - Usa box-sizing: border-box para incluir el padding y borde dentro del tamaño total */
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* Define variables CSS reutilizables (colores y degradados) */
+:root {
+  --linear-grad: linear-gradient(to right, #7db352, #7db352); /* Degradado lineal */
+  --grad-clr1: #7db352; /* Color principal 1 */
+  --grad-clr2: #7db352; /* Color principal 2 */
+}
+
+/* Estilos generales del body del login:
+   - Altura completa de la ventana (viewport)
+   - Fondo blanco
+   - Grid para centrar el contenido
+   - Fuente Poppins para todo el texto */
+.class_body_login {
+  height: 100vh;
+  background: #ffffff;
+  display: grid;
+  place-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Contenedor principal del formulario login/registro:
+   - Dimensiones fijas (850x500px)
+   - Fondo blanco
+   - Sombra suave para elevar el contenedor visualmente
+   - Bordes redondeados
+   - Oculta cualquier contenido que sobresalga */
+.container {
+  position: relative;
+  width: 850px;
+  height: 500px;
+  background-color: #ffffff;
+  box-shadow: 25px 30px 55px #5557;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+/* Contenedor del formulario (login o registro):
+   - Ocupa el 60% del ancho del contenedor padre
+   - Se posiciona de forma absoluta
+   - Espaciado horizontal de 40px
+   - Transiciones suaves para cambios de estado */
+.form-container {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  padding: 0px 40px;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Contenedor del formulario de registro:
+   - Inicialmente invisible (opacity 0)
+   - Colocado detrás del login (z-index 1) */
+.sign-up-container {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Contenedor del formulario de login:
+   - Visible inicialmente (z-index 2) */
+.sign-in-container {
+  z-index: 2;
+}
+
+/* Estilos generales de los formularios:
+   - Formato vertical (columnas)
+   - Centrado tanto vertical como horizontalmente
+   - Espaciado horizontal interno (padding) */
+form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 50px;
+}
+
+/* Títulos dentro del formulario:
+   - Color primario definido en las variables */
+h1 {
+  color: var(--grad-clr1);
+}
+
+/* Contenedor individual para cada campo de input:
+   - Ayuda a posicionar correctamente los inputs y sus efectos */
+.infield {
+  position: relative;
+  margin: 8px 0px;
+  width: 100%;
+}
+
+/* Campos de entrada (input):
+   - Ocupar todo el ancho
+   - Espaciado interno (padding)
+   - Fondo gris claro
+   - Sin bordes ni bordes de enfoque */
+input {
+  width: 100%;
+  padding: 12px 8px;
+  background-color: #f3f3f3;
+  border: none;
+  outline: none;
+}
+
+/* Línea de efecto debajo del input (aparece al enfocar):
+   - Se posiciona justo debajo del input
+   - Inicialmente oculta (width 0%)
+   - Se expande al enfocar el input */
+label {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: var(--linear-grad);
+  transition: 0.3s;
+}
+
+/* Animación de expansión de la línea al enfocar el input */
+input:focus ~ label {
+  width: 100%;
+}
+
+/* Estilo de todos los enlaces:
+   - Color oscuro
+   - Tamaño de letra pequeño
+   - Sin subrayado
+   - Margen vertical */
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0px;
+}
+
+/* Estilo específico para el enlace "¿Olvidaste tu contraseña?":
+   - Borde inferior decorativo */
+a.forgot {
+  padding-bottom: 3px;
+  border-bottom: 2px solid #eee;
+}
+
+/* Efecto hover para el enlace de contraseña:
+   - Cambia el color del texto */
+.forgot:hover {
+  color: #f7efde;
+}
+
+/* Botones principales del formulario:
+   - Bordes redondeados
+   - Fondo con color principal
+   - Letras blancas en mayúsculas
+   - Efecto de transición al interactuar */
+.styles_button {
+  border-radius: 20px;
+  border: 1px solid var(--grad-clr1);
+  background: var(--grad-clr2);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover de los botones:
+   - Fondo más claro
+   - Ligero movimiento hacia arriba */
+.styles_button:hover {
+  background: #e9dcbd;
+  transform: translateY(-2px);
+}
+
+/* Botones dentro de los formularios:
+   - Margen superior
+   - Transición rápida para efectos */
+.form-container button {
+  margin-top: 17px;
+  transition: 80ms ease-in;
+}
+
+/* Hover corregido para botones de formulario:
+   - Fondo blanco
+   - Texto en color del tema */
+.form-container button:hover {
+  background: #fff;
+  color: var(--grad-clr1);
+}
+
+/* Botón flotante (nuevo):
+   - Fijo en la esquina inferior izquierda
+   - Color de fondo verde
+   - Texto blanco
+   - Bordes redondeados
+   - Tamaño pequeño */
+.new-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #7db352;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Hover del botón flotante:
+   - Color de fondo más oscuro para resaltar */
+.new-button:hover {
+  background-color: #39723c;
+}
+
+/* Mensajes de error:
+   - Color rojo fuerte
+   - Letra pequeña
+   - Centrado
+   - Altura mínima para evitar saltos */
+.error {
+  color: #ff4444;
+  font-size: 14px;
+  margin: 10px 0;
+  text-align: center;
+  min-height: 20px;
+}
+
+/* Estilo de imagen/logo:
+   - Tamaño fijo
+   - Centrado
+   - Margen superior negativo para posicionarlo más arriba */
+.logo {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+  margin-top: -150px;
+}
+
+/* ============================
+Overlay: sección del efecto de cambio entre login y registro
+=============================== */
+
+/* Contenedor del overlay:
+   - Posicionado a la derecha del formulario
+   - Ocupa el 40% del ancho total
+   - Desbordamiento oculto */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 60%;
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 9;
+}
+
+/* Botón que activa la transición del overlay:
+   - Centrando el botón
+   - Estilo transparente */
+#overlayBtn {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 304px;
+  transform: translateX(-50%);
+  width: 143.67px;
+  height: 40px;
+  border: 1px solid #141e30;
+  background: transparent;
+  border-radius: 20px;
+}
+
+/* Hover en el botón de overlay:
+   - Oscurece y aplica sombra */
+#overlayBtn:hover {
+  filter: brightness(90%);
+  background: rgba(20, 30, 48, 0.2);
+  box-shadow: 0px 4px 10px rgba(20, 30, 48, 0.3);
+}
+
+/* Fondo del overlay:
+   - Degradado verde
+   - Doble tamaño para el efecto de transición */
+.overlay {
+  position: relative;
+  background: var(--linear-grad);
+  color: #fff;
+  left: -150%;
+  height: 100%;
+  width: 250%;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Paneles de contenido del overlay (izquierda y derecha):
+   - Alineación y espaciado interno */
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px 40px;
+  text-align: center;
+  height: 100%;
+  width: 340px;
+  transition: 0.6s ease-in-out;
+}
+
+/* Panel izquierdo: desplazado hacia adentro */
+.overlay-left {
+  right: 60%;
+  transform: translateX(-12%);
+}
+
+/* Panel derecho: aparece normal */
+.overlay-right {
+  right: 0;
+  transform: translateX(0%);
+}
+
+/* Títulos de los paneles: color oscuro */
+.overlay-panel h1 {
+  color: #141e30;
+}
+
+/* Párrafos dentro de los paneles: estilos de texto */
+p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 25px 0px 35px;
+  color: #141e30;
+}
+
+/* Botones dentro del overlay:
+   - Sin fondo
+   - Letras negras
+   - Efecto hover de iluminación */
+.overlay-panel button {
+  border: none;
+  background-color: transparent;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Hover de los botones del overlay */
+.overlay-panel button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* ============================
+Animaciones para cambiar entre login y registro
+=============================== */
+
+/* Cuando se activa .right-panel-active:
+   - Mueve el overlay hacia la izquierda */
+.right-panel-active .overlay-container {
+  transform: translateX(-150%);
+}
+
+/* Mueve el fondo del overlay */
+.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+/* Mueve los paneles individuales */
+.right-panel-active .overlay-left {
+  transform: translateX(25%);
+}
+.right-panel-active .overlay-right {
+  transform: translateX(35%);
+}
+
+/* Esconde el formulario de inicio de sesión */
+.right-panel-active .sign-in-container {
+  transform: translateX(20%);
+  opacity: 0;
+}
+
+/* Muestra el formulario de registro */
+.right-panel-active .sign-up-container {
+  transform: translateX(66.7%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+/* Animación keyframes para mostrar el registro */
+@keyframes show {
+  0%,
+  50% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50.1%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+/* ============================
+Animaciones especiales para botones
+=============================== */
+
+/* Animación especial que agranda y reduce el botón */
+.btnScaled {
+  animation: scaleBtn 0.6s;
+}
+
+/* Keyframes de la animación de escala */
+@keyframes scaleBtn {
+  0% {
+    width: 143.67px;
+  }
+  50% {
+    width: 250px;
+  }
+  100% {
+    width: 143.67px;
+  }
+}
